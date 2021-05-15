@@ -127,13 +127,14 @@ document.getElementById('request-number').onclick = function(){
     numbersArray.forEach(function(number){
         promise = promise.then(function () {
             return new Promise(function (resolve, reject) {
-                let url = `https://numbersapi.p.mashape.com/${number}/math`;
+                let url = `http://numbersapi.com/${number}/math`;
                 // console.log(url);
                 let xhttp = new XMLHttpRequest();
                 xhttp.onreadystatechange = function () {
                     // console.log('Request state: ', this.readyState);
 
                     if (this.readyState == 4 && this.status == 200) {
+                        debugger;
                         let content = document.createElement('p');
                         content.innerHTML = xhttp.responseText;
                         placeForResponse.appendChild(content);
@@ -142,7 +143,7 @@ document.getElementById('request-number').onclick = function(){
 
 
                 xhttp.open("GET", url, true);
-                xhttp.setRequestHeader('X-Mashape-Key', '0npu3bFoKHmshfCQIY0QxQ1BM4etp1yBQjmjsnrSvssvI2XBdu');
+                // xhttp.setRequestHeader('X-Mashape-Key', '0npu3bFoKHmshfCQIY0QxQ1BM4etp1yBQjmjsnrSvssvI2XBdu');
                 xhttp.send();
                 xhttp.onload = function () {
                     if (this.status == 200) {
